@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
+import files.FileOperations;
 
 import java.util.Scanner;
 
@@ -9,10 +11,14 @@ public class Program {
     Scanner sc = new Scanner(System.in);
     private boolean workingStage = true;
 
+    FileOperations fileOperations = new FileOperations();
+
     Shop flowerShop;
 
     public Program() {
         flowerShop = new Shop(0, "FlowerShop", "default");
+        flowerShop.employees = fileOperations.readEmployees();
+        flowerShop.flowers = fileOperations.readFlowers();
         menu();
     }
 
@@ -162,8 +168,14 @@ public class Program {
         flowerShop.flowers.set(id, flower);
     }
 
+    void saveFlowersAndEmployeesToFile() {
+        fileOperations.saveEmployees(flowerShop.getEmployees());
+        fileOperations.saveFlowers(flowerShop.getFlowers());
+    }
+
 
     public void menu() {
+
         while (workingStage) {
             System.out.println("1 - to add an employee to your shop\n" +
                     "2 - to add a new flower \n" +
@@ -210,6 +222,7 @@ public class Program {
                     this.menu();
                     break;
                 case 9:
+                    saveFlowersAndEmployeesToFile();
                     this.workingStage = false;
                     break;
                 default:
