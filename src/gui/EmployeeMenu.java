@@ -1,4 +1,11 @@
 package gui;
 
-public class EmployeeMenu {
+import javax.swing.*;
+import model.*;
+
+public class EmployeeMenu extends JFrame {
+
+    EmployeeMenu(Shop flowerShop) {
+        setTitle("Employee Menu");
+    }
 }

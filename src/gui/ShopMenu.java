@@ -1,4 +1,10 @@
 package gui;
 
-public class ShopMenu {
+import model.Shop;
+
+import javax.swing.*;
+
+public class ShopMenu extends JFrame {
+    public ShopMenu(Shop flowerShop) {
+    }
 }
