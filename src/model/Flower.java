@@ -6,6 +6,13 @@ public class Flower {
     private int price;
     private boolean available;
 
+    public Flower(String name, int article, int price, boolean available) {
+        this.article = article;
+        this.Name = name;
+        this.price = price;
+        this.available = available;
+    }
+
     public int getArticle() {
         return article;
     }
