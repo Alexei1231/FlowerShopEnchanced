@@ -36,6 +36,12 @@ public class Employee {
         this.age = age;
     }
 
+    public Employee(String name, int age, boolean isFired) {
+        this.name = name;
+        this.age = age;
+        this.isFired = isFired;
+    }
+
     public Employee() {
     }
 

@@ -11,13 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class FileOperations {
-//    public String employeesJson;
-//    public String flowersJson;
-//
-//    FileOperations(ArrayList<Employee> employees, ArrayList<Flower> flowers) {
-//        employeesJson = new Gson().toJson(employees);
-//        flowersJson = new Gson().toJson(flowers);
-//    }
+
 
     public void saveEmployees(ArrayList<Employee> employees) {
         try {

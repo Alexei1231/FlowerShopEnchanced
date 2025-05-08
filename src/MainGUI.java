@@ -1,5 +1,6 @@
 import gui.FlowerMenu;
 import gui.MainMenu;
+import model.Employee;
 import model.Shop;
 import files.FileOperations;
 
@@ -10,6 +11,10 @@ public class MainGUI {
         flowerShop.setEmployees(fileOperations.readEmployees());
         flowerShop.setFlowers(fileOperations.readFlowers());
 
+        for(Employee employee : fileOperations.readEmployees()) {
+            System.out.println(employee.getName());
+            System.out.println(employee.getAge());
+        }
         MainMenu mainMenu = new MainMenu(flowerShop);
         mainMenu.setVisible(true);
 

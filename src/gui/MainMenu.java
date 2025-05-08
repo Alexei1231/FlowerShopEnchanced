@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 public class MainMenu extends JFrame {
      Shop flowerShop;
@@ -28,7 +30,9 @@ public class MainMenu extends JFrame {
         JPanel panel = new JPanel();
 
         panel.setLayout(new GridLayout(2, 2, 10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+
+        JTable employeesTable = new JTable();
 
         JButton employeesButton = new JButton("Change Employees");
         JButton flowersButton = new JButton("Change Flowers");
