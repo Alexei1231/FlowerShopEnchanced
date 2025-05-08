@@ -88,8 +88,9 @@ public class FlowerMenu extends JFrame {
 
         addFlowerButton.addActionListener(e -> {
             String name = nameField.getText();
+            int article = Integer.parseInt(articleField.getText());
            int price = Integer.parseInt(priceField.getText());
-           int article = Integer.parseInt(articleField.getText());
+
            String status = (String) statusBox.getSelectedItem();
             if (name.isEmpty() || price < 0) return;
 
@@ -108,7 +109,7 @@ public class FlowerMenu extends JFrame {
                 int article = Integer.parseInt(articleField.getText());
                 String status = (String) statusBox.getSelectedItem();
 
-                Flower flo = new Flower(name, article, article, status.equals("Available"));
+                Flower flo = new Flower(name, article, price, status.equals("Available"));
                 flowersData.set(selected, flo);
                 tableModel.setValueAt(flo.getName(), selected, 0);
                 tableModel.setValueAt(flo.getArticle(), selected, 1);
@@ -137,7 +138,7 @@ public class FlowerMenu extends JFrame {
                 Flower flo = flowersData.get(selected);
                 nameField.setText(flo.getName());
                 articleField.setText(String.valueOf(flo.getArticle()));
-                articleField.setText(String.valueOf(flo.getPrice()));
+                priceField.setText(String.valueOf(flo.getPrice()));
                 statusBox.setSelectedItem(flo.getAvailable() ? "Available" : "Not Available");
             }
         });
