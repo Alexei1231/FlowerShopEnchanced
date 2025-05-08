@@ -29,14 +29,13 @@ public class MainMenu extends JFrame {
     private void initGui() {
         JPanel panel = new JPanel();
 
-        panel.setLayout(new GridLayout(2, 2, 10, 10));
+        panel.setLayout(new GridLayout(1, 3, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
         JTable employeesTable = new JTable();
 
         JButton employeesButton = new JButton("Change Employees");
         JButton flowersButton = new JButton("Change Flowers");
-        JButton storeSettingsButton = new JButton("Shop Parameters");
         JButton exitButton = new JButton("Exit");
 
         employeesButton.addActionListener(new ActionListener() {
@@ -54,13 +53,6 @@ public class MainMenu extends JFrame {
             }
         });
 
-        storeSettingsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new ShopMenu(flowerShop).setVisible(true);
-            }
-        });
-
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,7 +63,6 @@ public class MainMenu extends JFrame {
 
         panel.add(employeesButton);
         panel.add(flowersButton);
-        panel.add(storeSettingsButton);
         panel.add(exitButton);
 
         add(panel);

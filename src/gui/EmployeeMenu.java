@@ -49,10 +49,10 @@ public class EmployeeMenu extends JFrame {
         //panelButtons.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
 
         JButton addEmployeeButton = new JButton("Add Employee");
-        JButton removeEmployeeButton = new JButton("Remove Employee");
         JButton editEmployeeButton = new JButton("Edit Employee");
         JButton saveButton = new JButton("Save");
         JButton saveAndExitButton = new JButton("Save & Exit");
+        JButton exitButton = new JButton("Exit without Saving");
 
         JPanel panelTable = new JPanel();
         panelTable.setLayout(new GridLayout(1, 1, 10, 10));
@@ -76,10 +76,10 @@ public class EmployeeMenu extends JFrame {
 
 
         panelButtons.add(addEmployeeButton);
-        panelButtons.add(removeEmployeeButton);
         panelButtons.add(editEmployeeButton);
         panelButtons.add(saveButton);
         panelButtons.add(saveAndExitButton);
+        panelButtons.add(exitButton);
 
         addEmployeeButton.addActionListener(e -> {
             String name = nameField.getText();
@@ -121,6 +121,8 @@ public class EmployeeMenu extends JFrame {
            saveCurrentState(employeesData);
            dispose();
         });
+
+        exitButton.addActionListener(e -> {dispose();});
 
         table.getSelectionModel().addListSelectionListener(e -> {
             int selected = table.getSelectedRow();

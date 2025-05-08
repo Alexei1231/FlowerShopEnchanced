@@ -55,9 +55,9 @@ public class FlowerMenu extends JFrame {
 
         JButton addFlowerButton = new JButton("Add Flower");
         JButton editFlowerButton = new JButton("Edit Flower");
-        JButton removeFlowerButton = new JButton("Remove Flower");
         JButton saveButton = new JButton("Save");
         JButton saveAndExitButton = new JButton("Save & Exit");
+        JButton exitButton = new JButton("Exit without Saving");
 
         JPanel panelTable = new JPanel();
         panelTable.setLayout(new GridLayout(1, 1, 10, 10));
@@ -65,7 +65,7 @@ public class FlowerMenu extends JFrame {
 
         ArrayList<Flower> flowersData = shop.getFlowers();//employees data that adds to the table
 
-        tableModel = new DefaultTableModel(new String[]{"Name", "Age", "Status"}, 0);//table and tablemodel
+        tableModel = new DefaultTableModel(new String[]{"Name", "Article", "Price", "Status"}, 0);//table and tablemodel
         table = new JTable(tableModel);
         for (Flower flower : flowersData) {
             tableModel.addRow(new Object[]{flower.getName(), flower.getArticle(), flower.getPrice(), flower.getAvailable() ? "Available" : "Not Available"});
@@ -81,10 +81,10 @@ public class FlowerMenu extends JFrame {
 
 
         panelButtons.add(addFlowerButton);
-        panelButtons.add(removeFlowerButton);
         panelButtons.add(editFlowerButton);
         panelButtons.add(saveButton);
         panelButtons.add(saveAndExitButton);
+        panelButtons.add(exitButton);
 
         addFlowerButton.addActionListener(e -> {
             String name = nameField.getText();
@@ -128,6 +128,8 @@ public class FlowerMenu extends JFrame {
             saveCurrentState(flowersData);
             dispose();
         });
+
+        exitButton.addActionListener(e -> {dispose();});
 
         table.getSelectionModel().addListSelectionListener(e -> {
             int selected = table.getSelectedRow();
