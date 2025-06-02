@@ -83,7 +83,12 @@ public class EmployeeMenu extends JFrame {
 
         addEmployeeButton.addActionListener(e -> {
             String name = nameField.getText();
-            int age = Integer.parseInt(ageField.getText());
+            int age = -99;
+            try {
+                 age = Integer.parseInt(ageField.getText());
+            }catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid age");
+            }
             String status = (String) statusBox.getSelectedItem();
             if (name.isEmpty() || age < 0) return;
 
@@ -97,8 +102,14 @@ public class EmployeeMenu extends JFrame {
         editEmployeeButton.addActionListener(e -> {
             int selected = table.getSelectedRow();
             if (selected >= 0) {
+                Employee empTemp = employeesData.get(selected);
                 String name = nameField.getText();
-                int age = Integer.parseInt(ageField.getText());
+                int age = empTemp.getAge();
+                try {
+                    age = Integer.parseInt(ageField.getText());
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid age");
+                }
                 String status = (String) statusBox.getSelectedItem();
 
                 Employee emp = new Employee(name, age, status.equals("Fired"));

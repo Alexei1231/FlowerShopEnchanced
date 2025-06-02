@@ -88,8 +88,14 @@ public class FlowerMenu extends JFrame {
 
         addFlowerButton.addActionListener(e -> {
             String name = nameField.getText();
-            int article = Integer.parseInt(articleField.getText());
-           int price = Integer.parseInt(priceField.getText());
+            int article = -99;
+           int price = -99;
+                   try{
+                       article = Integer.parseInt(articleField.getText());
+                       price = Integer.parseInt(priceField.getText());
+                   }catch (NumberFormatException ex) {
+                       JOptionPane.showMessageDialog(null, "Please enter a valid number");
+                   }
 
            String status = (String) statusBox.getSelectedItem();
             if (name.isEmpty() || price < 0) return;
@@ -104,13 +110,22 @@ public class FlowerMenu extends JFrame {
         editFlowerButton.addActionListener(e -> {
             int selected = table.getSelectedRow();
             if (selected >= 0) {
+                Flower floTemp = flowersData.get(selected);
                 String name = nameField.getText();
-                int price = Integer.parseInt(priceField.getText());
-                int article = Integer.parseInt(articleField.getText());
+                int article = floTemp.getArticle();
+                int price = floTemp.getPrice();
+                try {
+                     price = Integer.parseInt(priceField.getText());
+                     article = Integer.parseInt(articleField.getText());
+                }catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number");
+
+                }
                 String status = (String) statusBox.getSelectedItem();
 
                 Flower flo = new Flower(name, article, price, status.equals("Available"));
                 flowersData.set(selected, flo);
+
                 tableModel.setValueAt(flo.getName(), selected, 0);
                 tableModel.setValueAt(flo.getArticle(), selected, 1);
                 tableModel.setValueAt(flo.getPrice(), selected, 2);
@@ -149,6 +164,7 @@ public class FlowerMenu extends JFrame {
     private void clearForm() {
         nameField.setText("");
         articleField.setText("");
+        priceField.setText("");
         statusBox.setSelectedIndex(0);
     }
 
